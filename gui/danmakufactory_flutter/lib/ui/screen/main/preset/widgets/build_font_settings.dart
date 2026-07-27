@@ -38,7 +38,7 @@ Widget buildFontSettings(
                 intent.changeTextShadow(val.toInt());
               },
               value: uiState.textShadow,
-              minVal: 1,
+              minVal: 0,
               maxVal: 4,
             ),
 

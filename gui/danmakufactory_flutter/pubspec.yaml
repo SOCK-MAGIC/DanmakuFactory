@@ -21,19 +21,19 @@ dependencies:
   # 文件选择 TODO可以升级
   file_picker:
     git:
-      url: https://gitcode.com/openharmony-sig/fluttertpc_file_picker.git
+      url: https://gitcode.com/CPF-Flutter/fluttertpc_file_picker.git
       path: ./
       ref: br_v8.0.7_ohos
   # 路径
   path_provider:
     git:
-      url: https://gitcode.com/openharmony-sig/flutter_packages.git
+      url: https://gitcode.com/CPF-Flutter/flutter_packages.git
       path: packages/path_provider/path_provider
       ref: master
   # url
   url_launcher:
     git:
-      url: https://gitcode.com/openharmony-tpc/flutter_packages.git
+      url: https://gitcode.com/CPF-Flutter/flutter_packages.git
       path: packages/url_launcher/url_launcher
       ref: br_url_launcher_v6.3.1_ohos
 
@@ -50,7 +50,7 @@ dependencies:
   # 分享
   share_plus:
     git:
-      url: https://gitcode.com/openharmony-sig/flutter_plus_plugins.git
+      url: https://gitcode.com/CPF-Flutter/flutter_plus_plugins.git
       path: packages/share_plus/share_plus
       ref: br_share_plus-v10.1.1_ohos
 
@@ -59,7 +59,7 @@ dependency_overrides:
   #强制覆盖
   path_provider:
     git:
-      url: https://gitcode.com/openharmony-sig/flutter_packages.git
+      url: https://gitcode.com/CPF-Flutter/flutter_packages.git
       path: packages/path_provider/path_provider
       ref: master
 

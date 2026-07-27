@@ -101,10 +101,10 @@ packages:
     dependency: transitive
     description:
       name: characters
-      sha256: f71061c654a3380576a52b451dd5532377954cf9dbd272a78fc8479606670803
+      sha256: faf38497bda5ead2a8c7615f4f7939df04333478bf32e4173fcb06d428b5716b
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.4.0"
+    version: "1.4.1"
   checked_yaml:
     dependency: transitive
     description:
@@ -237,8 +237,8 @@ packages:
     description:
       path: "."
       ref: "br_v8.0.7_ohos"
-      resolved-ref: b0379814d24abf242bbd9cf74c6d97d2dedc6d2a
-      url: "https://gitcode.com/openharmony-sig/fluttertpc_file_picker.git"
+      resolved-ref: "86ad5c767d94e01ad174eebae09931d651e64068"
+      url: "https://gitcode.com/CPF-Flutter/fluttertpc_file_picker.git"
     source: git
     version: "8.0.7"
   fixnum:
@@ -460,26 +460,26 @@ packages:
     dependency: transitive
     description:
       name: matcher
-      sha256: dc58c723c3c24bf8d3e2d3ad3f2f9d7bd9cf43ec6feaa64181775e60190153f2
+      sha256: dc0b7dc7651697ea4ff3e69ef44b0407ea32c487a39fff6a4004fa585e901861
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.12.17"
+    version: "0.12.19"
   material_color_utilities:
     dependency: transitive
     description:
       name: material_color_utilities
-      sha256: f7142bb1154231d7ea5f96bc7bde4bda2a0945d2806bb11670e30b850d56bdec
+      sha256: "9c337007e82b1889149c82ed242ed1cb24a66044e30979c44912381e9be4c48b"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.11.1"
+    version: "0.13.0"
   meta:
     dependency: transitive
     description:
       name: meta
-      sha256: e3641ec5d63ebf0d9b41bd43201a66e3fc79a65db5f61fc181f04cd27aab950c
+      sha256: "23f08335362185a5ea2ad3a4e597f1375e78bce8a040df5c600c8d3552ef2394"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.16.0"
+    version: "1.17.0"
   mime:
     dependency: transitive
     description:
@@ -525,8 +525,8 @@ packages:
     description:
       path: "packages/path_provider/path_provider"
       ref: master
-      resolved-ref: "77228ef90aa39dbb01981e608056598be4aea03c"
-      url: "https://gitcode.com/openharmony-sig/flutter_packages.git"
+      resolved-ref: "5c69f5f65ac32631846a6a3ae682f1f91c710cc3"
+      url: "https://gitcode.com/CPF-Flutter/flutter_packages.git"
     source: git
     version: "2.1.0"
   path_provider_android:
@@ -663,17 +663,17 @@ packages:
     description:
       path: "packages/share_plus/share_plus"
       ref: "br_share_plus-v10.1.1_ohos"
-      resolved-ref: "46cf97a5decaa48d8b95baee41f9f83d25a313ad"
-      url: "https://gitcode.com/openharmony-sig/flutter_plus_plugins.git"
+      resolved-ref: "55de300a8627c55cd45ac86e6a26bcae8e0ca4cf"
+      url: "https://gitcode.com/CPF-Flutter/flutter_plus_plugins.git"
     source: git
     version: "10.1.1"
   share_plus_platform_interface:
     dependency: transitive
     description:
       path: "packages/share_plus/share_plus_platform_interface"
-      ref: "46cf97a5decaa48d8b95baee41f9f83d25a313ad"
-      resolved-ref: "46cf97a5decaa48d8b95baee41f9f83d25a313ad"
-      url: "https://gitcode.com/openharmony-sig/flutter_plus_plugins.git"
+      ref: "55de300a8627c55cd45ac86e6a26bcae8e0ca4cf"
+      resolved-ref: "55de300a8627c55cd45ac86e6a26bcae8e0ca4cf"
+      url: "https://gitcode.com/CPF-Flutter/flutter_plus_plugins.git"
     source: git
     version: "5.0.1"
   shelf:
@@ -813,10 +813,10 @@ packages:
     dependency: "direct overridden"
     description:
       name: test_api
-      sha256: "8161c84903fd860b26bfdefb7963b3f0b68fee7adea0f59ef805ecca346f0c7a"
+      sha256: "949a932224383300f01be9221c39180316445ecb8e7547f70a41a35bf421fb9e"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.7.10"
+    version: "0.7.11"
   test_core:
     dependency: transitive
     description:
@@ -854,8 +854,8 @@ packages:
     description:
       path: "packages/url_launcher/url_launcher"
       ref: "br_url_launcher_v6.3.1_ohos"
-      resolved-ref: "62f91a2c40d1eb10e1502adcc85b6be135e3764e"
-      url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
+      resolved-ref: "3cbdcb35cf5d8e4b4dc18bd9081c98c0c1c97df0"
+      url: "https://gitcode.com/CPF-Flutter/flutter_packages.git"
     source: git
     version: "6.1.12"
   url_launcher_android:
@@ -894,8 +894,8 @@ packages:
     dependency: transitive
     description:
       path: "packages/url_launcher/url_launcher_ohos"
-      ref: HEAD
-      resolved-ref: a7dd1d3a77d66233629742a301eaf7ec32e50023
+      ref: "br_url_launcher_v6.3.1_ohos"
+      resolved-ref: "3cbdcb35cf5d8e4b4dc18bd9081c98c0c1c97df0"
       url: "https://gitcode.com/openharmony-tpc/flutter_packages.git"
     source: git
     version: "6.0.38"
