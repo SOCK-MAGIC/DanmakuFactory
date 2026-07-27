@@ -22,6 +22,7 @@
  */
 
 #include "Config.h"
+#include "../FileUtil/FileUtil.h"
 #include "../String/DanmakuFactoryString.h"
 #include <math.h>
 #include <stdio.h>
@@ -42,7 +43,7 @@ CONFIG readConfig(const char *const configFileName, const CONFIG defaultConfig)
     char buf[SIZE_OF_BUF], *bufPtr, *bufCopyPtr;
     CONFIG configOnfile = defaultConfig;
 
-    FILE *fptr = fopen(configFileName, "r");
+    FILE *fptr = utf8_fopen(configFileName, "r");
     if (fptr == NULL)
     {
         return configOnfile;
@@ -218,6 +219,14 @@ CONFIG readConfig(const char *const configFileName, const CONFIG defaultConfig)
         {
             configOnfile.lineSpacing = atoi(value);
         }
+        else if (strcmp("topmargin", key) == 0)
+        {
+            configOnfile.topMargin = atoi(value);
+        }
+        else if (strcmp("bottommargin", key) == 0)
+        {
+            configOnfile.bottomMargin = atoi(value);
+        }
         else if (strcmp("fontname", key) == 0)
         {
             strSafeCopy(configOnfile.fontname, value, FONTNAME_LEN);
@@ -294,7 +303,7 @@ CONFIG readConfig(const char *const configFileName, const CONFIG defaultConfig)
  */
 BOOL writeConfig(const char *const configFileName, const CONFIG newConfig)
 {
-    FILE *fptr = fopen(configFileName, "w");
+    FILE *fptr = utf8_fopen(configFileName, "w");
 
     char tempStr[MAX_TEXT_LENGTH];
     CONFIG newConfigCopy = newConfig;
@@ -313,6 +322,8 @@ BOOL writeConfig(const char *const configFileName, const CONFIG newConfig)
 
             "    \"density\": %d,\n"
             "    \"lineSpacing\": %d,\n"
+            "    \"topMargin\": %d,\n"
+            "    \"bottomMargin\": %d,\n"
             "    \"fontsize\": %d,\n"
             "    \"fontname\": \"%s\",\n"
             "    \"opacity\": %d,\n"
@@ -322,8 +333,9 @@ BOOL writeConfig(const char *const configFileName, const CONFIG newConfig)
             newConfigCopy.resolution.x, newConfigCopy.resolution.y, newConfigCopy.displayarea, newConfigCopy.scrollarea,
             newConfigCopy.scrolltime, newConfigCopy.fixtime,
 
-            newConfigCopy.density, newConfigCopy.lineSpacing, newConfigCopy.fontsize, newConfigCopy.fontname,
-            newConfigCopy.opacity, newConfigCopy.outline, newConfigCopy.shadow, boolToStr(tempStr, newConfigCopy.bold));
+            newConfigCopy.density, newConfigCopy.lineSpacing, newConfigCopy.topMargin, newConfigCopy.bottomMargin,
+            newConfigCopy.fontsize, newConfigCopy.fontname, newConfigCopy.opacity, newConfigCopy.outline,
+            newConfigCopy.shadow, boolToStr(tempStr, newConfigCopy.bold));
 
     /* 写是否保存屏蔽部分 */
     if (newConfigCopy.saveBlockedPart == FALSE)
@@ -499,8 +511,10 @@ void printConfig(CONFIG config)
         printf("(unlimit)");
     }
 
-    printf(" | LineSpacing: %d | Fontsize: %d | Fontname: \"%s\" | Opacity: %d | Outline: %.1f", config.lineSpacing,
-           config.fontsize, config.fontname, config.opacity, config.outline);
+    printf(" | LineSpacing: %d | TopMargin: %d | BottomMargin: %d | Fontsize: %d | Fontname: \"%s\" | Opacity: %d | "
+           "Outline: %.1f",
+           config.lineSpacing, config.topMargin, config.bottomMargin, config.fontsize, config.fontname, config.opacity,
+           config.outline);
     if (fabs(config.outline) < EPS)
     {
         printf("(disable)");

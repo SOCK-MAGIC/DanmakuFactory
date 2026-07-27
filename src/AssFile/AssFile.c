@@ -23,6 +23,7 @@
 
 #include "AssFile.h"
 #include "../Define/CLIDef.h"
+#include "../FileUtil/FileUtil.h"
 #include "AssStringProcessing.h"
 
 static int printStatDataStr(FILE *filePtr, const int startTime, const int endTime, const int posX, const int posY,
@@ -77,7 +78,7 @@ int readAss(const char *const fileName, DANMAKU **danmakuHead, const char *mode,
 int readAssFile(ASSFILE *assFile, const char *const fileName)
 {
     FILE *fptr;
-    if ((fptr = fopen(fileName, "r")) == NULL)
+    if ((fptr = utf8_fopen(fileName, "r")) == NULL)
     {
         return 1;
     }
@@ -1111,7 +1112,7 @@ int writeAss(const char *const fileName, DANMAKU *danmakuHead, const CONFIG conf
              STATUS *const status)
 {
 
-    FILE *fptr = fopen(fileName, "w");
+    FILE *fptr = utf8_fopen(fileName, "w");
 
     int returnValue = 0;
 
@@ -1844,6 +1845,8 @@ int writeAssDanmakuPart(FILE *opF, DANMAKU *head, CONFIG config, STATUS *const s
     const float rollArea = config.scrollarea;
     const int density = config.density;
     const int lineSpacing = config.lineSpacing;
+    const int topMargin = config.topMargin;
+    const int bottomMargin = config.bottomMargin;
     const int blockMode = config.blockmode;
     const BOOL saveBlockedPart = config.saveBlockedPart;
     const BOOL showMsgBox = config.showMsgBox;
@@ -2135,8 +2138,8 @@ int writeAssDanmakuPart(FILE *opF, DANMAKU *head, CONFIG config, STATUS *const s
 
             printTime(opF, now->time, ",");
             printTime(opF, now->time + rollTime, ",");
-            fprintf(opF, "R2L,,0000,0000,0000,,{\\move(%d,%d,%d,%d)", resolution.x + textLen / 2, PositionY,
-                    -1 * textLen / 2, PositionY);
+            fprintf(opF, "R2L,,0000,0000,0000,,{\\move(%d,%d,%d,%d)", resolution.x + textLen / 2, PositionY + topMargin,
+                    -1 * textLen / 2, PositionY + topMargin);
 
             if (textHei != fontSize)
             {
@@ -2214,8 +2217,8 @@ int writeAssDanmakuPart(FILE *opF, DANMAKU *head, CONFIG config, STATUS *const s
 
             printTime(opF, now->time, ",");
             printTime(opF, now->time + rollTime, ",");
-            fprintf(opF, "L2R,,0000,0000,0000,,{\\move(%d,%d,%d,%d)", -1 * textLen / 2, PositionY,
-                    resolution.x + textLen / 2, PositionY);
+            fprintf(opF, "L2R,,0000,0000,0000,,{\\move(%d,%d,%d,%d)", -1 * textLen / 2, PositionY + topMargin,
+                    resolution.x + textLen / 2, PositionY + topMargin);
 
             if (textHei != fontSize)
             {
@@ -2282,7 +2285,7 @@ int writeAssDanmakuPart(FILE *opF, DANMAKU *head, CONFIG config, STATUS *const s
 
             printTime(opF, now->time, ",");
             printTime(opF, now->time + holdTime, ",");
-            fprintf(opF, "TOP,,0000,0000,0000,,{\\pos(%d,%d)", resolution.x / 2, PositionY);
+            fprintf(opF, "TOP,,0000,0000,0000,,{\\pos(%d,%d)", resolution.x / 2, PositionY + topMargin);
 
             if (textHei != fontSize)
             {
@@ -2349,7 +2352,8 @@ int writeAssDanmakuPart(FILE *opF, DANMAKU *head, CONFIG config, STATUS *const s
 
             printTime(opF, now->time, ",");
             printTime(opF, now->time + holdTime, ",");
-            fprintf(opF, "BTM,,0000,0000,0000,,{\\pos(%d,%d)", resolution.x / 2, PositionY - holdLineHeight);
+            fprintf(opF, "BTM,,0000,0000,0000,,{\\pos(%d,%d)", resolution.x / 2,
+                    PositionY - holdLineHeight - bottomMargin);
 
             if (textHei != fontSize)
             {

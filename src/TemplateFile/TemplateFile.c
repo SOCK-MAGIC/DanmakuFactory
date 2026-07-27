@@ -22,6 +22,7 @@
  */
 
 #include "TemplateFile.h"
+#include "../FileUtil/FileUtil.h"
 
 /*
  * 读取用户自定义模板文件
@@ -44,7 +45,7 @@ int readTemplateFile(const char *const ipFile, const char *const templateFile, D
     }
 
     /* 打开文件 */
-    if ((tempfptr = fopen(templateFile, "r")) == NULL)
+    if ((tempfptr = utf8_fopen(templateFile, "r")) == NULL)
     {
         return 1;
     }
@@ -238,8 +239,8 @@ int readTemplateFile(const char *const ipFile, const char *const templateFile, D
                         if ((verType != 0 && tempPtr != tempStr) || *linePtr == '\0')
                         { /* 存储字符串常量 */
                             *tempPtr = '\0';
-                            if ((format.strTable[strTableIndex] = (char *)malloc(strlen(tempStr) * sizeof(char))) ==
-                                NULL)
+                            if ((format.strTable[strTableIndex] =
+                                     (char *)malloc((strlen(tempStr) + 1) * sizeof(char))) == NULL)
                             {
                                 return 2;
                             }
@@ -553,7 +554,7 @@ int readTemplateFile(const char *const ipFile, const char *const templateFile, D
     char *startPtr;
     size_t readSize = 0;
 
-    if ((ipfptr = fopen(ipFile, "r")) == NULL)
+    if ((ipfptr = utf8_fopen(ipFile, "r")) == NULL)
     {
         return 3;
     }
